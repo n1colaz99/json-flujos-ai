@@ -1,0 +1,495 @@
+{
+    "name": "c4afe435-f09a-4b21-b64e-18e888879a0d",
+    "id": "/providers/Microsoft.Flow/flows/c4afe435-f09a-4b21-b64e-18e888879a0d",
+    "type": "Microsoft.Flow/flows",
+    "properties": {
+        "apiId": "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+        "displayName": "requerimiento 2 V2",
+        "definition": {
+            "metadata": {
+                "workflowEntityId": null,
+                "processAdvisorMetadata": null,
+                "flowChargedByPaygo": null,
+                "flowclientsuspensionreason": "None",
+                "flowclientsuspensiontime": null,
+                "flowclientsuspensionreasondetails": null,
+                "creator": {
+                    "id": "1bd9f466-05d3-4840-9061-22a7f95fb794",
+                    "type": "User",
+                    "tenantId": "2bac32fd-d9a2-40d9-a272-3a35920f5607"
+                },
+                "provisioningMethod": "FromDefinition",
+                "failureAlertSubscription": true,
+                "clientLastModifiedTime": "2025-10-27T22:25:55.4787829Z",
+                "connectionKeySavedTimeKey": "2025-10-27T22:25:55.4787829Z",
+                "creationSource": null,
+                "modifiedSources": "Portal"
+            },
+            "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+            "contentVersion": "undefined",
+            "parameters": {
+                "$authentication": {
+                    "defaultValue": {},
+                    "type": "SecureObject"
+                },
+                "$connections": {
+                    "defaultValue": {},
+                    "type": "Object"
+                }
+            },
+            "triggers": {
+                "Recurrence": {
+                    "recurrence": {
+                        "frequency": "Month",
+                        "interval": 1,
+                        "startTime": "2025-10-17T15:00:00.000Z"
+                    },
+                    "evaluatedRecurrence": {
+                        "frequency": "Month",
+                        "interval": 1,
+                        "startTime": "2025-10-17T15:00:00.000Z"
+                    },
+                    "metadata": {
+                        "operationMetadataId": "76f93e31-c4e7-4c7e-877a-937ee8ef5452"
+                    },
+                    "type": "Recurrence"
+                }
+            },
+            "actions": {
+                "Enumerar_las_filas_de_una_tabla": {
+                    "runAfter": {},
+                    "metadata": {
+                        "01L6VM574WGZOINOLWNRH3DQDLHCUCBJHD": "/requerimiento 2V1/Calificaciones V8.xlsx",
+                        "tableId": "{3D2AEC78-A8C8-487E-80FA-7A9514FF4292}",
+                        "operationMetadataId": "5cdf9e43-576e-4101-8651-39303ef88fec"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                        "parameters": {
+                            "source": "me",
+                            "drive": "b!-zFAr-H_nk2ETAzdiYO-8r2SZRcZA_1GshrikvV_EJHwQeZ7E1yWSpxn-4VEDMst",
+                            "file": "01L6VM574WGZOINOLWNRH3DQDLHCUCBJHD",
+                            "table": "{3D2AEC78-A8C8-487E-80FA-7A9514FF4292}"
+                        },
+                        "host": {
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness",
+                            "connectionName": "shared_excelonlinebusiness-1",
+                            "operationId": "GetItems"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                    }
+                },
+                "Inicializar_variable_Porcentaje": {
+                    "runAfter": {
+                        "Inicializar_variable_TotalEvidencias": [
+                            "Succeeded"
+                        ]
+                    },
+                    "metadata": {
+                        "operationMetadataId": "199aecef-60df-4ddc-a444-0c4623f3c3d9"
+                    },
+                    "type": "InitializeVariable",
+                    "inputs": {
+                        "variables": [
+                            {
+                                "name": "Porcentaje",
+                                "type": "float",
+                                "value": 0
+                            }
+                        ]
+                    }
+                },
+                "Inicializar_variable_cuerpoMensaje": {
+                    "runAfter": {
+                        "Inicializar_variable_Porcentaje": [
+                            "Succeeded"
+                        ]
+                    },
+                    "metadata": {
+                        "operationMetadataId": "27952cf5-70c9-4fe0-ad91-45d42717118d"
+                    },
+                    "type": "InitializeVariable",
+                    "inputs": {
+                        "variables": [
+                            {
+                                "name": "cuerpoMensaje",
+                                "type": "string",
+                                "value": "''"
+                            }
+                        ]
+                    }
+                },
+                "Inicializar_variable_cuerpoMensaje2": {
+                    "runAfter": {
+                        "Inicializar_variable_cuerpoMensaje": [
+                            "Succeeded"
+                        ]
+                    },
+                    "metadata": {
+                        "operationMetadataId": "ced82a19-24b2-4226-9499-3a5543364575"
+                    },
+                    "type": "InitializeVariable",
+                    "inputs": {
+                        "variables": [
+                            {
+                                "name": "cuerpoMensaje2",
+                                "type": "string",
+                                "value": "''"
+                            }
+                        ]
+                    }
+                },
+                "Inicializar_variable_cuerpoMensaje3": {
+                    "runAfter": {
+                        "Inicializar_variable_cuerpoMensaje2": [
+                            "Succeeded"
+                        ]
+                    },
+                    "metadata": {
+                        "operationMetadataId": "09d00dde-abe0-48ba-9869-21f9d71eddd3"
+                    },
+                    "type": "InitializeVariable",
+                    "inputs": {
+                        "variables": [
+                            {
+                                "name": "cuerpoMensaje3",
+                                "type": "string",
+                                "value": "''"
+                            }
+                        ]
+                    }
+                },
+                "Inicializar_variable_cuerpoMensaje4": {
+                    "runAfter": {
+                        "Inicializar_variable_cuerpoMensaje3": [
+                            "Succeeded"
+                        ]
+                    },
+                    "metadata": {
+                        "operationMetadataId": "f0600a7b-4fac-4f3d-b4c3-30d6dbd1df42"
+                    },
+                    "type": "InitializeVariable",
+                    "inputs": {
+                        "variables": [
+                            {
+                                "name": "cuerpoMensaje4",
+                                "type": "string",
+                                "value": "''"
+                            }
+                        ]
+                    }
+                },
+                "Filtrar_matriz": {
+                    "runAfter": {
+                        "ContadorEstudiantess": [
+                            "Succeeded"
+                        ]
+                    },
+                    "metadata": {
+                        "operationMetadataId": "a077723c-21d8-49e8-bd69-555108ce4907"
+                    },
+                    "type": "Query",
+                    "inputs": {
+                        "from": "@outputs('Enumerar_las_filas_de_una_tabla')?['body/value']",
+                        "where": "@equals(item()?['ESTADO'],'En Formación')"
+                    }
+                },
+                "Aplicar_a_cada_estudiante": {
+                    "foreach": "@body('Filtrar_matriz')",
+                    "actions": {
+                        "AplicaraCadaEvidencia": {
+                            "foreach": "@outputs('EvidenciasArevisar_')",
+                            "actions": {
+                                "calificacion": {
+                                    "metadata": {
+                                        "operationMetadataId": "a7768244-b361-4596-b328-027635af26b5"
+                                    },
+                                    "type": "Compose",
+                                    "inputs": "@items('Aplicar_a_cada_estudiante')[item()]"
+                                },
+                                "CondiciónNoEsVacio": {
+                                    "actions": {
+                                        "Incrementar_variableTotalEvidencias": {
+                                            "runAfter": {
+                                                "DEBUG_Antes_Incrementar": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "metadata": {
+                                                "operationMetadataId": "e19b89e0-2777-4666-91fb-6b6b122f8c78"
+                                            },
+                                            "type": "IncrementVariable",
+                                            "inputs": {
+                                                "name": "TotalEvidencias",
+                                                "value": 1
+                                            }
+                                        },
+                                        "CondiciónEsA": {
+                                            "actions": {
+                                                "Incrementar_variableTotalEvidencias1": {
+                                                    "metadata": {
+                                                        "operationMetadataId": "7111d97b-48a5-4914-90e4-35a257412bf9"
+                                                    },
+                                                    "type": "IncrementVariable",
+                                                    "inputs": {
+                                                        "name": "TotalEvidencias",
+                                                        "value": 1
+                                                    }
+                                                }
+                                            },
+                                            "runAfter": {
+                                                "DEBUG_Despues_Incrementar": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "else": {
+                                                "actions": {
+                                                    "datos_cuerpo_mensaje": {
+                                                        "metadata": {
+                                                            "operationMetadataId": "0fc516db-4bc2-4ef9-81f0-9ee2f318e9ba"
+                                                        },
+                                                        "type": "Compose",
+                                                        "inputs": "@concat(string(item()),' : ',outputs('calificacion'),'<br>')"
+                                                    }
+                                                }
+                                            },
+                                            "expression": {
+                                                "and": [
+                                                    {
+                                                        "equals": [
+                                                            "@outputs('calificacion')",
+                                                            "A"
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "metadata": {
+                                                "operationMetadataId": "88a384e6-140b-4bbb-b19d-248b69775ce1"
+                                            },
+                                            "type": "If"
+                                        },
+                                        "DEBUG_Despues_No_Vacio:": {
+                                            "type": "Compose",
+                                            "inputs": "@concat('Calificación NO vacía: ', item())"
+                                        },
+                                        "DEBUG_Antes_Incrementar": {
+                                            "runAfter": {
+                                                "DEBUG_Despues_No_Vacio:": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "Compose",
+                                            "inputs": "@concat('Antes - Evidencias: ', string(variables('TotalEvidencias')), ' Aprobadas: ', string(variables('TotalAprobadas')))"
+                                        },
+                                        "DEBUG_Despues_Incrementar": {
+                                            "runAfter": {
+                                                "Incrementar_variableTotalEvidencias": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "Compose",
+                                            "inputs": "@concat('Después - Evidencias: ', string(variables('TotalEvidencias')), ' Aprobadas: ', string(variables('TotalAprobadas')))"
+                                        }
+                                    },
+                                    "runAfter": {
+                                        "calificacion": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "else": {
+                                        "actions": {}
+                                    },
+                                    "expression": {
+                                        "and": [
+                                            {
+                                                "not": {
+                                                    "equals": [
+                                                        "@outputs('calificacion')",
+                                                        "''"
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "metadata": {
+                                        "operationMetadataId": "d9adf7b5-b718-470f-a6f2-d8645b4c765d"
+                                    },
+                                    "type": "If"
+                                }
+                            },
+                            "runAfter": {
+                                "ContadorEstudiantes": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "metadata": {
+                                "operationMetadataId": "7db81f3f-f324-4122-ab2c-e3c685263934"
+                            },
+                            "type": "Foreach"
+                        },
+                        "EvidenciasArevisar_": {
+                            "runAfter": {
+                                "DEBUG_ANTES_DE_PROCESAR": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "metadata": {
+                                "operationMetadataId": "2e56615f-74f8-46a3-85ed-04e9363dfc3f"
+                            },
+                            "type": "Compose",
+                            "inputs": "@createArray('AP1_Técnico_Formulación_del_proyecto_de_software_GA1_220501092-AA1_EV01','AP1_Técnico_Diseño_del_instrumento_de_recolección_de información_GA1_220501092_AA1_EV02','AP1_Técnico_Especificación_de_los_requerimientos_funcionales_y_no_funcionales_del_software_ GA1_220501092_AA4_EV01_EV02_EV03','AP1_Técnico_Informe_de_evaluación_de_los_requerimientos_GA1_220501092_AA5-EV01_EV02','AP1_Inglés_Evidencia_de_desempeño_y_producto_Diapositivas_con_el_guión_y_Video_Family_member_or_friend_introduction_GA1_240202501_AA1_EV012','AP1_Técnico_Documento_identificando_la_metodología_para_el_proyecto_de_desarrollo_de_software_GA1_220501093_AA1_EV01_EV02_EV03_EV04','AP1_Comunicación_Mapa_conceptual_Software_y_servicios_de_nternet_Relacionar_correctamente_los_tipos_de_software_y_servicios_de_internet_GA1_220501046_AA1_EV01','AP1_Transversal_Hábitos_saludables_GA1_230101507_AA2_EV01','AP1_Técnico_Taller_Utilización_de_las_herramientas_de ofimática_ Realizar_un taller_práctico_con_las_herramientas_ofimáticas_GA1_220501046_AA2_EV01','AP1_Técnico_Informe_mejora_de_productos_y_procesos_con_la incorporación_de_TIC_GA1_220501046_AA3_EV01','AP2_Técnico_elaboración_de_diagramas_y_plantillas_para_casos_de_uso_del proyecto_GA2_220501093_AA1_ EV01_EV02_ EV03_ EV04','AP2_Técnico_Elaboración_de_los_diagramas_del_modelo_de_dominio_del_proyecto_GA2_220501093_AA2_EV01','AP2_Técnico_ Elaboración_del_informe_de análisis_con_listas_de_chequeo_para_la_validación_de_artefactos_GA2_220501093_AA3_EV01_EV02','AP2_Emprendimiento_AA2_AA3_EV01_Evidencias_de_Ficha_técnica_de_los_productos_requeridos_los_términos_de_referencia_para_el_contrato_y_lista_de_chequeo_para_evaluación_de_proveedores_AA4_EV01_Evidencia_de producto_Propuestas_técnica_y_económica','AP2_Instructor_Transversal_SST_Ambiental_y_Cultura_Física_Cultura_física_y_planteamiento_de_Actividades_físicas_y_Coordinación_Motriz_Higiene_Postural_y_Pausas_Activas_en_el_Desempeño_Social_y_Laboral_GA2_230101507_AA1_AA3_AA4_EV01','AP2_Técnico_Evidencia_de_desempeño_Diseño_de_las_fichas_técnicas_para_la_recolección_de_la_información_GA2_220501094_AA1_EV01_EV02_EV03','AP2_Inglés_Evidencia_de_producto_crónica_GA2_240202501_AA1_EV01','AP2_Matemáticas_Cuestionario_procedimientos_aritméticos_GA2_240201528_AA1_EV01','AP2_Matemáticas_Evidencia_de_producto_Video_sustentación_GA2_240201528_AA3_EV01','Ap2_Inglés_Evidencia_de_desempeño_Presentación_GA2_240202501_AA2_EV01','AP2_Matemáticas_Algoritmo_para_el_cálculo_de_áreas_y_volúmenes_GA2_240201517_AA1_AA4_EV01_2','AP2_Comunicación_Ejemplo_de_una_marca_sostenible_que_cumpla_con_Triple_Bottom_Line_GA2_240201526_AA1_EV01')"
+                        },
+                        "EvidenciasArevisar2": {
+                            "runAfter": {
+                                "EvidenciasArevisar_": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "metadata": {
+                                "operationMetadataId": "b525ad24-cb2f-4cfe-aadb-931f8f258e33"
+                            },
+                            "type": "Compose",
+                            "inputs": "@createArray('AP3_Técnico_Taller_de_resolución_de_problemas_de_algoritmos_en_pseudocódigo_y_diagramas_de_flujo_con_estructuras_GA3_220501093_AA1_AA2_EV01','AP3_Transversal_Cuestionario_sobre_opciones_de_solución_a_situaciones_que_se_presentan_en_el_contexto_ambiental_y_del_SST_GA3_220601501_AA1_EV0','AP3_Técnico_Taller_aplicando_estructuras_y_procedimientos_en_la_solución_de_algoritmos_JavaScript_GA3_220501093_AA2_EV01','AP3_Técnico_Resolución_a_problemas_algorítmicos_aplicando_funciones_y_estructuras_de_almacenamiento_JavaScript_GA3_220501093_AA3_EV01','AP3_Técnico_Resolución_de_estructuras_funciones_y_structuras_de_almacenamiento_Java_GA3_220501093_AA3_EV02','AP3_Técnico_Resolución_de_estructuras_funciones_y_estructuras_de_almacenamiento_Java_GA3_220501093_AA3_EV02','AP3_Transversal_SST_Identificación_de_Peligros_y_Riesgos_Laborales_y_ambientales_Consecuencias_y_Determinación_de_Controles_GA220601501_AA2_AA3_AA4_EV1_1','AP3_Inglés_Evidencia_de_conocimiento_Video_GA3_240202501_AA1_AA2_EV01','AP4_Técnico_Identificar_entidades_y_relaciones_planteadas_en_el_caso_de_estudio_Laboratorio_GA4_220501093_AA1_EV01','AP4_Técnico_Modelos_conceptual_y_lógico_para_el_proyecto_desarrollo_de_software_Proyecto_GA4_220501095_AA1_AA2_EV01','Evidencia_de_desempeño_Video_La_comunicación_como_expresión_humana_GA4_240201524_AA1_EV01','AP4_Técnico_Principios_de_programación_orientada_a_objetos_con_UML_y_patrones_de_diseño_GA4_220501095_AA2_EV01_EV03','AP4_Técnico_Desarrollar_la_arquitectura_de_software_de_acuerdo_al_patrón_de_diseño_seleccionado_GA4_220501095_AA2_EV04_EV05','AP4_Técnico_Diagrama_de_despliegue_para_caso_de_estudio_y_proyecto_de_software_GA4_220501095_AA3_EV01','AP4_Inglés_mapa_mental_sobre_su_Personal_Learning_Environment_PLE_GA4_240202501_AA1_EV01','AP4_Comunicación_Presentación_Proyecto_de_vida_GA4_240201524_AA2_EV01')"
+                        },
+                        "EvidenciasArevisar3": {
+                            "runAfter": {
+                                "EvidenciasArevisar2": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "metadata": {
+                                "operationMetadataId": "39d6336d-6f0b-4d4d-8e4d-310700566e04"
+                            },
+                            "type": "Compose",
+                            "inputs": "@createArray('AP5_Técnico_Maquetación_de_la_Interfaz_gráfica_en_HTML_GA5_220501095_AA1_EV02','AP5_Técnico_Maquetación_de_la_interfaz_gráfica_en_XML_Android_GA5_220501095_AA1_EV04','AP5_Inglés_Diagrama_de_flujo_sobre_las_instrucciones_de_un_proceso_relacionado_con_su_quehacer_laboral_GA5_240202501_AA1_EV01','AP5_Física_Cuestionario_Fundamentos_de_Física_GA_220201501_AA1','AP5_Física_Video_expositivo_sobre_experimento_de_aplicación_GA5_220201501_AA2_EV01','AP5_Física_GA3_220201501_AA2_AA3_AA4_EV01_Informe_de_laboratorio','AP6_Técnico_Resolución_de_problemas_aplicando_el_modelo_relacional_cardinalidad_y_normalización_LABORATORIO_GA6_220501096_AA1_EV01_EV02','AP6_Técnico_Creación_de_los_objetos_de_la_base_de_datos_y_Elaboración_de_las_bases_de_datos_GA6_220501096_AA1_EV03_EV04','AP6_Técnico_Destrezasy_conocimientos_en_el_manejo_de_sentencias_DDL_y_DML_de_SQL_GA6_220501096_AA2_EV01','AP6_Técnico_Creación_de_la_estructura_de_la_BD_aplicación_de_restricciones_y_Script_bases_de_datos_del_proyecto_GA6_220501096_AA2_EV02_EV03','AP6_Emprendimiento_Modelo_financiero_Proyectar_viabilidad_financiera_del_emprendimiento_GA11_240201529_AA3_EV01','AP6_Técnico_Evidencia_de_desempeño_Creación_de_la_estructura_de_la_BD_y_aplicación_de_restricciones_NoSQL_GA6_220501096_AA2_EV04','AP6_Derechos_Funamentales_Características_del_trabajo_en_contexto_Local_GA6_210201501_AA1_EV1','AP6_Técnico_Crear_diseño_de_sitio_web_con_la_implementación_de_componentes_frontend_HTML_CSS_JS_GA6_220501096_AA3_EV01_EV02_EV03')"
+                        },
+                        "EvidenciasArevisar4": {
+                            "runAfter": {
+                                "EvidenciasArevisar3": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "metadata": {
+                                "operationMetadataId": "ead0f1ee-103c-49ce-82b3-c7afab828967"
+                            },
+                            "type": "Compose",
+                            "inputs": "@createArray(\r\n  'AP7_Técnico_Herramientas_de_versionamiento_GIT_instalada_y_configurada_GA7_220501096_AA1_EV01','AP7_Inglés_Evidencia_de_Conocimiento_Documento_escrito_sobre_un_tema_específico_de_su_actividad_laboral_o_programa_de_formación_GA7_240202501_AA1_EV01','AP7_Técnico_POO_Ejercicios_de_programación_con_estructuras_de_datos_en_Java_GA7_220501096_AA2_EV02','AP7_Técnico_Desarrollo_del_Tutorial_Construcción_de_aplicación_con_Java_GA7_220501096_AA2_EV03','AP7_Inglés_Evidencia_de_Producto_Video_sobre_el_tema_específico_de_su_actividad_laboral_o_programa_de_formación_GA7_240202501_AA1_EV02','AP7_Técnico_Desarrollo_de_aplicaciones_con_conexión_a_base_de_datos_desde_PHP_GA7_220501096_AA2_EV05','AP7_Técnico_Módulos_de_software_codificados_y_probados_GA7_220501096_AA2_EV05','AP7_Derechos_fundamentales_Trabajo_decente_ciudadanía_laboral_derechos_individuales_y_colectivos_en_el_trabajo_negociación_colectiva_y_huelga_GA8_210201501_AA2_EV1','AP7_Técnico_Componente_frontend_del_proyecto_formativo_y_proyectos_de_clase_listas_de_chequeo_Diseño_y_desarrollo_de_servicios_web_API_del_proyecto_GA7_220501096_AA4_EV01_EV02_EV07','AP7_Comunicación_Cátedra_Video_presentación_Proyecto_de_vida_GA8_240201526_AA2_EV01','AP7_Investigación_Conocimiento_y_producto_Propuesta_de_investigación_formativa_GA8_240201064_AA1_EV01','AP7_Técnico_Taller_sobre_tecnologías_emergentes_y_disruptivas_Machine_Learning_y_Blockchain_GA8_220501096_AA2_EV01_EV02_EV03','AP7_Comunicación_Cátedra_Diagrama_de_sistemas_Relación_del_individuo_con_el_entorno_GA8_240201526_AA3_EV01','AP7_Técnico_APK_desarrollar_módulos_móvil_segun_requerimientos_del_proyecto_GA8_220501096_AA2_EV02','AP7_Técnico_Documenta_y_realiza_pruebas_de_software_de_acuerdo_con_la_planificación_y_reporte_de_pruebas_GA9_220501096_AA1_AA2_AA3_EV01_EV02',' AP7. Comunicación-cátedra. Mapa mental. Hitos del conflicto armado en Colombia en los últimos 50 años. GA9-240201526-AA6-EV01','AP7_Comunicación_cátedra_Mapa_mental_Hitos_del_conflicto_armado_en_Colombia_en_los_últimos_50_años_GA9_240201526_AA6_EV01'\r\n)"
+                        },
+                        "DEBUG_Contador_Estudiante": {
+                            "type": "Compose",
+                            "inputs": "@concat('Procesando estudiante #', variables('ContadorEstudiantes'))"
+                        },
+                        "ContadorEstudiantes": {
+                            "runAfter": {
+                                "EvidenciasArevisar4": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "IncrementVariable",
+                            "inputs": {
+                                "name": "ContadorEstudiantes",
+                                "value": 1
+                            }
+                        },
+                        "DEBUG_ANTES_DE_PROCESAR": {
+                            "runAfter": {
+                                "DEBUG_Contador_Estudiante": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Compose",
+                            "inputs": "@concat('Procesando estudiante: ', item()?['NOMBRE DEL APRENDIZ'])"
+                        }
+                    },
+                    "runAfter": {
+                        "Filtrar_matriz": [
+                            "Succeeded"
+                        ]
+                    },
+                    "metadata": {
+                        "operationMetadataId": "4063af20-d293-4b24-a645-dd0090717d9c"
+                    },
+                    "type": "Foreach"
+                },
+                "Inicializar_variable_TotalAprobadas": {
+                    "runAfter": {
+                        "Enumerar_las_filas_de_una_tabla": [
+                            "Succeeded"
+                        ]
+                    },
+                    "metadata": {
+                        "operationMetadataId": "d3d5a550-d0fb-4711-88fa-7b0fb29d190d"
+                    },
+                    "type": "InitializeVariable",
+                    "inputs": {
+                        "variables": [
+                            {
+                                "name": "TotalAprobadas",
+                                "type": "integer",
+                                "value": 0
+                            }
+                        ]
+                    }
+                },
+                "Inicializar_variable_TotalEvidencias": {
+                    "runAfter": {
+                        "Inicializar_variable_TotalAprobadas": [
+                            "Succeeded"
+                        ]
+                    },
+                    "metadata": {
+                        "operationMetadataId": "2df5123b-ebbd-4fb8-8361-b6196d61208e"
+                    },
+                    "type": "InitializeVariable",
+                    "inputs": {
+                        "variables": [
+                            {
+                                "name": "TotalEvidencias",
+                                "type": "integer",
+                                "value": 0
+                            }
+                        ]
+                    }
+                },
+                "_Debug_Total_Procesados": {
+                    "runAfter": {
+                        "Aplicar_a_cada_estudiante": [
+                            "Succeeded"
+                        ]
+                    },
+                    "type": "Compose",
+                    "inputs": "@concat(\r\n  'RESUMEN: Procesados ', \r\n  length(body('Filtrar_matriz')),\r\n  ' estudiantes. Completado: 1 estudiante.'\r\n)"
+                },
+                "ContadorEstudiantess": {
+                    "runAfter": {
+                        "Inicializar_variable_cuerpoMensaje4": [
+                            "Succeeded"
+                        ]
+                    },
+                    "type": "InitializeVariable",
+                    "inputs": {
+                        "variables": [
+                            {
+                                "name": "ContadorEstudiantes",
+                                "type": "integer",
+                                "value": 0
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "connectionReferences": {
+            "shared_excelonlinebusiness-1": {
+                "connectionName": "shared-excelonlinebu-10cb37eb-fd64-4620-99f8-7b7533800842",
+                "source": "Embedded",
+                "id": "/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness",
+                "tier": "NotSpecified",
+                "apiName": "excelonlinebusiness",
+                "isProcessSimpleApiReferenceConversionAlreadyDone": false
+            }
+        },
+        "flowFailureAlertSubscribed": false,
+        "isManaged": false
+    }
+}
